@@ -1,13 +1,12 @@
-
+#!/usr/bin/env python
+#-*- coding: utf-8 -*-
 
 class Node:
-
 	neighbours = []
-
 	distance = 0
+
 	def __lt__(self, other):
 		return self.distance < other.distance
-
 
 class Path(list):
 	nodes = []
@@ -17,7 +16,7 @@ class Path(list):
 	def __getslice__(self, i, j):
 		return Path(nodes.__getslice__(i, j))
 
-def findPath(startnode, endnode):
+def find_path(startnode, endnode):
 	visited_nodes = []
 	to_visit = [[]]
 	current_node = startnode
@@ -30,9 +29,11 @@ def findPath(startnode, endnode):
 				new_path = copy.deepcopy(current_path)
 				new_path.append(node) 
 				to_visit.append(new_path)
+
 		sort(to_visit)			
 		if len(current_path) == 0:
 			return []
+
 		current_path = to_visit.pop()
 		current_node = current_path[len(current_path)]
 		if current_node is endnode:
