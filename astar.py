@@ -5,14 +5,14 @@ class Node:
 	neighbours = []
 
 	distance = 0
-	def __lt__(self, other): #Less than. 
+	def __lt__(self, other):
 		return self.distance < other.distance
 
 
 class Path(list):
 	nodes = []
 	def __lt__ (self, other):
-		return self.nodes[-1] < other.nodes[-1] #Compare two last nodes
+		return self.nodes[-1] < other.nodes[-1]
 	
 	def __getslice__(self, i, j):
 		return Path(nodes.__getslice__(i, j))
@@ -37,6 +37,3 @@ def findPath(startnode, endnode):
 		current_node = current_path[len(current_path)]
 		if current_node is endnode:
 			return current_node
-
-		
-
