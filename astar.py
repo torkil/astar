@@ -18,25 +18,25 @@ class Path(list):
 		return Path(nodes.__getslice__(i, j))
 
 def findPath(startnode, endnode):
-	visitedNodes = []
-	toVisit = [[]]
-	currentNode = startnode
-	currentPath = [startnode]
+	visited_nodes = []
+	to_visit = [[]]
+	current_node = startnode
+	current_path = [startnode]
 
 	while True:
-		visitedNodes.append(currentNode)
-		for node in currentNode.neighbours:
-			if node not in visitedNodes:
-				newPath = copy.deepcopy(currentPath)
-				newPath.append(node) 
-				toVisit.append(newPath)
-		sort(toVisit)			
-		if len(currentPath) == 0:
+		visited_nodes.append(current_node)
+		for node in current_node.neighbours:
+			if node not in visited_nodes:
+				new_path = copy.deepcopy(current_path)
+				new_path.append(node) 
+				to_visit.append(new_path)
+		sort(to_visit)			
+		if len(current_path) == 0:
 			return []
-		currentPath = toVisit.pop()
-		currentNode = currentPath[len(currentPath)]
-		if currentNode is endnode:
-			return currentNode
+		current_path = to_visit.pop()
+		current_node = current_path[len(current_path)]
+		if current_node is endnode:
+			return current_node
 
 		
 
